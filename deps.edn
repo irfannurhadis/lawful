@@ -1,0 +1,29 @@
+{;; ---------------------------------------------------------------------------
+ ;; lawful — a pure category-theory toolkit for JOLT.
+ ;;
+ ;; Target runtime: Jolt (Chez Scheme). Sources are .cljc (a cheap hedge) but
+ ;; ONLY Jolt is verified. For the JVM and ClojureScript, prefer fluokitten /
+ ;; cats — this library does not claim those runtimes. lawful.core depends on
+ ;; nothing; lawful.schema adds malli. See AGENTS.md.
+ ;; ---------------------------------------------------------------------------
+ :deps {metosin/malli {:mvn/version "0.16.4"}}
+
+ ;; Library sources only. `test` is NOT here — it belongs in the :test alias so
+ ;; consumers do not inherit the test tree on their classpath.
+ :paths ["src"]
+
+ :aliases
+ {;; `jolt -M:test`. test.check is declared explicitly so the property tests
+  ;; never rely on it arriving transitively via malli.
+  :test
+  {:extra-paths ["test"]
+   :extra-deps  {org.clojure/test.check {:mvn/version "1.1.1"}}
+   :main-opts   ["-m" "lawful.test-runner"]}
+
+  ;; Local REPL workflow only. Kept out of the library :deps so consumers do not
+  ;; inherit an nREPL middleware dependency.
+  :nrepl
+  {:extra-deps       {jolt-lang/nrepl {:git/url "https://github.com/jolt-lang/nrepl"
+                                       :git/tag "v0.4.0" :git/sha "7efdd6c"}}
+   :nrepl/middleware [nrepl.middleware/default-middleware
+                      cider.nrepl/cider-middleware]}}}

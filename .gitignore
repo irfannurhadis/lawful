@@ -1,0 +1,21 @@
+# Build / dependency caches
+.cpcache/
+.jolt/
+.lsp/
+.clj-kondo/.cache/
+
+# Editor / REPL scratch
+.calva/
+.nrepl-port
+*.calva-repl
+
+# OS / editor noise
+.DS_Store
+*.swp
+*~
+.eca/
+.calva/
+.clj-kondo/
+.lsp/
+.jolt/
+notes/
