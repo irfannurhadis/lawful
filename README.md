@@ -39,7 +39,7 @@ As a git dependency (recommended once tagged):
 ;; deps.edn
 {:deps {lawful/lawful {:git/url "https://github.com/irfannurhadis/lawful"
                        :git/tag "v0.1.0"
-                       :git/sha "<sha>"}}}
+                       :git/sha "ae512976f5d8759c5ab659297d48d81683e0948f"}}}
 ```
 
 Or locally, while developing against a checkout:
